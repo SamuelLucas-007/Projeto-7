@@ -1,0 +1,97 @@
+    <div class="register-card-container">
+        <div class="register-card">
+            <div class="register-card-logo">
+                <img src="/imagens/Logo-Gradiente.png" alt="Logo">
+            </div>
+            <div class="register-card-header">
+                <h1>Dados do Responsável</h1>
+            </div>
+            <form class="register-card-form" method="post" action="">
+                <div class="form-item">
+                    <span>Nome do responsável</span>
+                    <input type="text" placeholder="Nome do Dono" name="nomeDono" id="nomeDono" required autofocus>
+                    <% if(error.nomeDono) {%>
+                        <span id="incorrect-data"><%= error.nomeDono %></span>
+                    <% }%>
+                </div>
+                <div class="form-item">
+                    <span>Cpf do responsável</span>
+                    <input type="text" id="cpfDono" placeholder="Cpf do Dono" name="cpfDono" maxlength="14" required>
+                    <% if(error.cpfDono){%>
+                        <span id="incorrect-data"><%= error.cpfDono %></span>
+                    <% }%>
+                </div>
+                <div class="form-item">
+                    <span>Telefone do responsável</span>
+                    <input type="text" id="telDono" placeholder="Telefone do Dono" name="telDono" maxlength="16" required>
+                    <% if(error.telDono){%>
+                        <span id="incorrect-data"><%= error.telDono %></span>
+                    <% }%>
+                </div>
+                <div class="form-item">
+                    <span>Data de nascimento do responsável</span>
+                    <input type="text" id="owner_birth_date" placeholder="Data de nascimento" name="owner_birth_date" maxlength="10" required>
+                    <% if(error.owner_birth_date){%>
+                        <span id="incorrect-data"><%= error.owner_birth_date %></span>
+                    <% }%>
+                </div>
+                <button type="submit" onclick="armazenarCookies()">Continuar</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        const cpf_dono = document.querySelector('#cpfDono')
+
+        cpf_dono.addEventListener('keypress', () => {
+            let cpf_donolength = cpf_dono.value.length
+
+            if (cpf_donolength === 3 || cpf_donolength === 7){
+                cpf_dono.value += '.'
+            }else if (cpf_donolength === 11){
+                cpf_dono.value += '-'
+            }
+        })
+
+        const tel_dono = document.querySelector('#telDono')
+
+        tel_dono.addEventListener('keypress', () => {
+            let tel_donolength = tel_dono.value.length
+
+            if (tel_donolength === 0){
+                tel_dono.value += "("
+            }else if (tel_donolength === 3){
+                tel_dono.value += ") "
+            }else if (tel_donolength === 6){
+                tel_dono.value += " "
+            }else if (tel_donolength === 11){
+                tel_dono.value += "-"
+            }
+        })
+
+        const owner_birth_date = document.querySelector('#owner_birth_date')
+        
+        owner_birth_date.addEventListener('keypress', () => {
+            let owner_birth_date_lenght = owner_birth_date.value.length
+
+            if (owner_birth_date_lenght === 2 || owner_birth_date_lenght === 5){
+                owner_birth_date.value += "/"
+            }
+        })
+        function createCookie(name,value,minutes) {
+        if (minutes) {
+            var date = new Date();
+            date.setTime(date.getTime()+(minutes*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }else{
+            var expires = "";
+        }
+        document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function armazenarCookies(){
+            createCookie("nome_dono", String(document.getElementById('nomeDono').value), 30)
+            createCookie("tel_dono", String(document.getElementById('telDono').value), 30)
+            createCookie("cpf_dono", String(document.getElementById('cpfDono').value), 30)
+            createCookie("owner_birth_date", String(document.getElementById('owner_birth_date').value), 30)
+        }
+    </script>

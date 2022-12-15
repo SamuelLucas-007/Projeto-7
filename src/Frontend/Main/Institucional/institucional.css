@@ -1,0 +1,154 @@
+@import url('https://fonts.cdnfonts.com/css/averta-blackitalic');
+
+main{
+    justify-content: center;
+    font-family: 'Averta-Regular', sans-serif;
+}
+
+* {
+    font-family: 'Averta-Regular', sans-serif;
+}
+
+ 
+.item {
+    flex: none;
+    width: 100%;
+}
+
+
+#Ca:hover {
+    color: #006B3F;
+}
+    
+#A {
+    margin-left: 20px; 
+    margin-top: 70px;
+    font-size: 30px; 
+}
+
+#B {
+    margin-bottom: 50px;
+    margin-left: 20px; 
+    color: #006B3F;
+   
+}
+#BB {
+    border-bottom: 5px solid rgb(168, 166, 166);
+    width: 1300px;
+    margin-left: 286.5px;
+
+}
+
+.rowtitulo {
+    margin-left: 10px; 
+    margin-top: 70px;
+    color: #006B3F;
+    font-size: 40px;
+}
+
+.rowtexto {
+    margin-left: 20px; 
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.rowtitulo-2 { 
+    margin-left: 450px; 
+    margin-top: 70px;
+    color: #006B3F;
+    font-size: 20px;
+}
+
+
+.rowtexto-2 {
+    margin-left: 20px;
+    font-size: 25px; 
+}
+
+
+.rowtitulo-3 {
+    margin-left: 470px; 
+    margin-top: 70px;
+    color: #006B3F;
+    font-size: 20px;
+}
+
+
+.rowtexto-3{
+    margin-left: 20px; 
+    font-size: 25px;
+}
+
+
+.descricao {
+    background-color: rgba(216, 216, 216, 0.5);
+    width: 1200px;
+    border-radius: 10px;
+    margin-left: 336px;
+}
+
+.descricao2 {
+    background-color: rgba(216, 216, 216, 0.5);
+    width: 1100px;
+    border-radius: 10px;
+    margin-left: 5px;
+
+}
+
+.descricao3 {
+    background-color: rgba(216, 216, 216, 0.5);
+    width: 1450px;
+    border-radius: 10px;
+    height: 400px;
+    margin-left: 211.5px;
+}
+
+.caixa2 { 
+    display: flex;
+    width: 90%;
+    gap: 100px;
+
+}
+
+
+#img {
+    margin-left: 70px;
+    margin-top: 150px;
+}
+
+.video {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+}
+
+footer {
+    background: linear-gradient(11.16deg, #006B3F 0%, #079D56 111.35%);
+    color: white;
+
+    padding: 20px 0px;
+}
+
+footer h3 {
+    border-bottom: white solid 1px;
+}
+
+footer .col-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer ul a {
+    color: white;
+}
+footer ul a:hover {
+    color: white;
+}

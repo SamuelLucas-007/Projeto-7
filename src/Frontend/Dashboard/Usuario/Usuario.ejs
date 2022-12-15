@@ -1,0 +1,191 @@
+<main class="col-8">
+    <!--  Conteúdo principal da página  -->
+    <h1>Usuário</h1>
+    <div class="container">
+        <center>
+            <div class="container-foto">
+                <label for="file-input">
+                    <img class="imagensFoto" src="../../../../imagens/Usuario/empreiteiro-1.jpg" width="200">
+
+                    <div class="middle">
+                        <div class="">
+                            <img src="../../../../imagens/Usuario/edit-icon-png.png" width="140">
+                </label>
+                <input id="file-input" type="file" hidden />
+            </div>
+    </div>
+    </div>
+    </center><br><br>
+
+
+    <div class="input-group mb-3">
+        <form method="post">
+            <div class="row" id="row">
+                <div class="col-12">
+                    <label>Razão social:</label>
+                    <br>
+                    <input type="text" class="form-control" value="<%= user.name%>" aria-label="Username"
+                        aria-describedby="basic-addon1" name="razaoSocial">
+                </div>
+                <div class="col-9">
+                    <label>CNPJ:</label>
+                    <br>
+                    <input type="text" class="form-control" id="cnpj" maxlength="18" value="<%= user.cnpj %>" aria-label="Username"
+                        aria-describedby="basic-addon1" name="cnpj">
+                </div>
+                <div class="col-6">
+                    <label>Número de Funcionários:</label>
+                    <br>
+                    <input type="text" class="form-control" name="numFuncionarios" value="<%= user.employees_number %>"
+                        aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="col-6">
+                    <label>Telefone:</label>
+                    <br>
+                    <input type="text" class="form-control" maxlength="16" id="telEmpresa" name="telEmpresa" value="<%= user.cellphone %>"
+                        aria-label="Amount (to the nearest dollar)">
+                </div>
+                <div class="col-6">
+                    <label>E-mail:</label>
+                    <br>
+                    <input type="text" class="form-control" name="email" value="<%= user.email %>"
+                        aria-label="Amount (to the nearest dollar)">
+                </div>
+                <div class="col-9">
+                    <label for="nomeDono">Nome do responsável:</label><br>
+                    <input type="text" class="form-control" id="nomeDono" name="nomeDono" value="<%= user.owner_name %>"
+                        aria-label="Amount (to the nearest dollar)">
+                </div>
+                <div class="col-6">
+                    <label>CPF do responsável:</label>
+                    <br>
+                    <input type="text" class="form-control" maxlength="14" id="cpfDono" name="cpfDono" value="<%= user.owner_cpf %>"
+                        aria-describedby="basic-addon3">
+                </div>
+                <div class="col-6">
+                    <label>Telefone do responsável:</label>
+                    <br>
+                    <input type="text" class="form-control" maxlength="16" id="telDono" name="telDono" value="<%= user.owner_cellphone %>"
+                        aria-describedby="basic-addon3">
+                </div>
+                <div class="col-6">
+                    <label>Data de nascimento do responsável:</label>
+                    <br>
+                    <input type="text" class="form-control" placeholder="Digite a data de nascimento do responsável:"
+                        aria-describedby="basic-addon3" name="owner_birth_date" id="owner_birth_date" maxlength="10" value="<%= user.owner_birth_date %>" required>
+                </div>
+                <div class="col-6">
+                    <label>E-mail do contador:</label>
+                    <br>
+                    <input type="email" class="form-control" name="emailContador" value="<%= user.counter_email  %>"
+                        aria-describedby="basic-addon3">
+                </div>
+                <div class="col-6">
+                    <label>Telefone do contador:</label>
+                    <br>
+                    <input type="text" class="form-control" maxlength="16" id="telContador" name="telContador" value="<%= user.counter_cellphone %>"
+                        aria-describedby="basic-addon3">
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <a href="">
+                            <input type="submit" id="button" class="btn btn-success" value="Salvar">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    </center>
+    <center>
+        
+    </center><br><br>
+    </div>
+</main>
+<script>
+    const cnpj = document.querySelector('#cnpj')
+
+    cnpj.addEventListener('keypress', () => {
+    let cnpjlength = cnpj.value.length
+
+        if (cnpjlength === 2 || cnpjlength === 6){
+            cnpj.value += "."
+        }else if (cnpjlength === 10){
+            cnpj.value += "/"
+        }else if (cnpjlength === 15){
+            cnpj.value += "-"
+        }
+    })
+
+    const tel = document.querySelector('#telEmpresa')
+
+        tel.addEventListener('keypress', () => {
+            let tel_length = tel.value.length
+
+            if (tel_length === 0){
+                tel.value += "("
+            }else if (tel_length === 3){
+                tel.value += ") "
+            }else if (tel_length === 6){
+                tel.value += " "
+            }else if (tel_length === 11){
+                tel.value += "-"
+            }
+        })
+
+        const cpf_dono = document.querySelector('#cpfDono')
+
+        cpf_dono.addEventListener('keypress', () => {
+            let cpf_donolength = cpf_dono.value.length
+
+            if (cpf_donolength === 3 || cpf_donolength === 7){
+                cpf_dono.value += '.'
+            }else if (cpf_donolength === 11){
+                cpf_dono.value += '-'
+            }
+        })
+
+        const tel_dono = document.querySelector('#telDono')
+
+        tel_dono.addEventListener('keypress', () => {
+            let tel_donolength = tel_dono.value.length
+
+            if (tel_donolength === 0){
+                tel_dono.value += "("
+            }else if (tel_donolength === 3){
+                tel_dono.value += ") "
+            }else if (tel_donolength === 6){
+                tel_dono.value += " "
+            }else if (tel_donolength === 11){
+                tel_dono.value += "-"
+            }
+        })
+
+        const tel_contador = document.querySelector('#telContador')
+
+        tel_contador.addEventListener('keypress', () => {
+            let tel_contadorlength = tel_contador.value.length
+
+            if (tel_contadorlength === 0){
+                tel_contador.value += "("
+            }else if (tel_contadorlength === 3){
+                tel_contador.value += ") "
+            }else if (tel_contadorlength === 6){
+                tel_contador.value += " "
+            }else if (tel_contadorlength === 11){
+                tel_contador.value += "-"
+            }
+        })
+
+        const owner_birth_date = document.querySelector('#owner_birth_date')
+        
+        owner_birth_date.addEventListener('keypress', () => {
+            let owner_birth_date_lenght = owner_birth_date.value.length
+
+            if (owner_birth_date_lenght === 2 || owner_birth_date_lenght === 5){
+                owner_birth_date.value += "/"
+            }
+        })
+
+</script>

@@ -1,0 +1,45 @@
+    <div class="register-card-container">
+        <div class="register-card">
+            <div class="register-card-logo">
+                <img src="/imagens/Logo-Gradiente.png" alt="Logo">
+            </div>
+            <div class="register-card-header">
+                <h1>Cadastre-se</h1>
+            </div>
+            <form class="register-card-form" method="post">
+                <div class="form-item">
+                    <span id="form-item-icon" class="material-symbols-outlined">mail</span>
+                    <input type="email" id="email" placeholder="Digite Seu Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name='email' required autofocus>
+                    <% if(error.email) {%>
+                        <span id="incorrect-data"><%= error.email %></span>
+                    <% }%>
+                </div>
+                <div class="form-item">
+                    <span id="form-item-icon" class="material-symbols-outlined">lock</span>
+                    <input type="password" id="password" name='password' placeholder="Digite Sua Senha" required>
+                    <% if(error.password) {%>
+                        <span id="incorrect-data"><%= error.password %></span>
+                    <% }%>
+                </div>
+                <button type="submit" onclick="armazenarCookies()">Continuar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function createCookie(name,value,minutes) {
+        if (minutes) {
+            var date = new Date();
+            date.setTime(date.getTime()+(minutes*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }else{
+            var expires = "";
+        }
+        document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function armazenarCookies(){
+            createCookie("email", String(document.getElementById('email').value), 30)
+            createCookie("senha", String(document.getElementById('password').value), 30)
+        }
+    </script>
