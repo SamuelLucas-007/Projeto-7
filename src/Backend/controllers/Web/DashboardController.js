@@ -35,7 +35,7 @@ class WebDashboardController {
         res.render('dashboard/Cadastro/pages', {
             erro: {},
             title: 'Criação de obra',
-            conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/CriarObra',
+            conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/Obra',
             css: '/dashboard/Obra/Obra.css',
             secondAside: {},
             currentPage: req.url
@@ -164,9 +164,7 @@ class WebDashboardController {
                 owner_name: req.body.nomeDono,
                 owner_cellphone: req.body.telDono,
                 owner_cpf: req.body.cpfDono,
-                owner_birth_date: req.body.owner_birth_date,
-                counter_email: req.body.emailContador,
-                counter_cellphone: req.body.telContador
+                owner_birth_date: '22323334',
             });
             await createBuilder.insert()
             res.redirect('/dashboard/usuarios');
@@ -383,8 +381,6 @@ class WebDashboardController {
         user.setOwnerName(req.body.nomeDono);
         user.setOwnerCellphone(req.body.telDono);
         user.setOwnerCpf(req.body.cpfDono);
-        user.setCounterEmail(req.body.emailContador);
-        user.setCounterCellphone(req.body.telContador);
 
         user.update();
 
@@ -411,20 +407,6 @@ class WebDashboardController {
                 throw error;
             }
         }
-    })
-
-    static postUpdateConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
-        const id = req.params.id;
-        const construciton = await ConstrucitonModel.getByColumns({ id: id })
-
-        construciton.setName(req.body.name);
-        construciton.setCityId(req.body.city_id);
-        construciton.setDescription(req.body.description);
-
-        construciton.update();
-
-        res.redirect('/dashboard/obras')
-
     })
 
     static deleteConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {

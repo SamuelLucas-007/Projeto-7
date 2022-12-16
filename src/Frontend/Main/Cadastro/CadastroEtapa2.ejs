@@ -12,7 +12,7 @@
             <form class="register-card-form" method="post" action="">
                 <div class="form-item">
                     <span>Razão Social</span>
-                    <input type="text" placeholder="Digite a Razão Social" name="razaoSocial" id="razaoSocial" required autofocus>
+                    <input type="text" placeholder="Digite a Razão Social" name="razaoSocial" required autofocus>
                     <% if(error.razaoSocial) {%>
                         <span id="incorrect-data"><%= error.razaoSocial %></span>
                     <% }%>
@@ -24,7 +24,7 @@
                         <span id="incorrect-data"><%= error.cnpj %></span>
                     <% }%>
                 </div>
-                <button type="submit" onclick="armazenarCookies()">Continuar</button>
+                <button type="submit">Continuar</button>
             </form>
         </div>
     </div>
@@ -42,20 +42,4 @@
                 cnpj.value += "-"
             }
         })
-
-        function createCookie(name,value,minutes) {
-        if (minutes) {
-            var date = new Date();
-            date.setTime(date.getTime()+(minutes*60*1000));
-            var expires = "; expires="+date.toGMTString();
-        }else{
-            var expires = "";
-        }
-        document.cookie = name+"="+value+expires+"; path=/";
-        }
-
-        function armazenarCookies(){
-            createCookie("razao_social", String(document.getElementById('razaoSocial').value), 30)
-            createCookie("cnpj", String(document.getElementById('cnpj').value), 30)
-        }
     </script>
